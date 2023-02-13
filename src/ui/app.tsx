@@ -23,6 +23,8 @@ import {AtifPermitemlenParameters} from "../dt/atif_permitemlen_parameters";
 import {AtifInputPermitemUI} from "./input/permitemlen";
 import {AtifIterativeParameters} from "../dt/atif_iterative_parameters";
 import {AtifInputIterativeUI} from "./input/iterative";
+import {AtifRunParameters} from "../dt/atif_run_parameters";
+import {TextField} from "@mui/material";
 
 
 // App 展示组件
@@ -41,20 +43,23 @@ function AppComponent() {
     const [diameterParameters, setDiameterParameters] = useState<AtifDiameterParameters>(new AtifDiameterParameters())
     const [permitemlenParameters, setPermitemlenParameters] = useState<AtifPermitemlenParameters>(new AtifPermitemlenParameters())
     const [iterativeParameters, setIterativeParameters] = useState<AtifIterativeParameters>(new AtifIterativeParameters())
+    const [filepath, setFilepath] = useState("")
 
-    const renderValue = [
-        methodParameters.toString(),
-        polymerParameters.toString(),
-        sequenceParameters.toString(),
-        sizeParameters.toString(),
-        saltParameters.toString(),
-        wallParameters.toString(),
-        energyParameters.toString(),
-        valencyParameters.toString(),
-        diameterParameters.toString(),
-        permitemlenParameters.toString(),
-        iterativeParameters.toString(),
-    ].join("")
+    const run = new AtifRunParameters()
+
+    run.methodParameter = methodParameters
+    run.polymerParameter = polymerParameters
+    run.sequenceParameters = sequenceParameters
+    run.sizeParameters = sizeParameters
+    run.saltParameters = saltParameters
+    run.wallParameters = wallParameters
+    run.energyParameters = energyParameters
+    run.valencyParameters = valencyParameters
+    run.diameterParameters = diameterParameters
+    run.permitemlenParameters = permitemlenParameters
+    run.iterativeParameters = iterativeParameters
+    run.filepath = filepath
+
 
     return <div>
         <AtifInputMethodUI methodParameters={methodParameters}
@@ -102,7 +107,12 @@ function AppComponent() {
                                   setIterativeParameters(new AtifIterativeParameters(data))
                               }}/>
 
-        <pre>{renderValue}</pre>
+        <TextField value={filepath} type={"file"} label={"数据输出文件"}
+                   onChange={(event) => {
+                       setFilepath(event.target.value)
+                   }}/>
+
+        <pre>{run.toString()}</pre>
     </div>
 }
 

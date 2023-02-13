@@ -28,7 +28,7 @@ export class AtifRunParameters {
   public iterativeParameters: AtifIterativeParameters = new AtifIterativeParameters()
   public filepath = ""
 
-  constructor(data: AtifRunParameters | null) {
+  constructor(data: AtifRunParameters | null = null) {
     if (data == null) {
       return
     }
