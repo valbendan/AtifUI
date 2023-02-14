@@ -13,9 +13,10 @@ if (require('electron-squirrel-startup')) {
   app.quit();
 }
 
+// 初始化 electron/remote
+initializeElectronRemote()
+
 const createWindow = (): void => {
-  // 初始化 electron/remote
-  initializeElectronRemote()
   // 初始化日志
   // initializeLog({spyRendererConsole: false})
 
@@ -37,7 +38,9 @@ const createWindow = (): void => {
   mainWindow.loadURL(MAIN_WINDOW_WEBPACK_ENTRY);
 
   // Open the DevTools.
-  mainWindow.webContents.openDevTools();
+  if (app.isPackaged == false) {
+    mainWindow.webContents.openDevTools();
+  }
 };
 
 // This method will be called when Electron has finished

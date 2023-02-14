@@ -170,10 +170,12 @@ function AppComponent() {
                                       }}/>
             }/>
 
-            <OutputFileBlock filepath={filepath}
-                             onFilepathChange={async (filepath) => {
-                                 setFilepath(filepath)
-                             }}/>
+            <InputWrapperBlock name={"File"} innerUI={
+                <OutputFileBlock filepath={filepath}
+                                 onFilepathChange={async (filepath) => {
+                                     setFilepath(filepath)
+                                 }}/>
+            }/>
 
         </div>
         <div>
