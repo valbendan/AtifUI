@@ -5,6 +5,7 @@ import {AtifInputMethodUI} from "./input/method";
 import {AtifMethodParameters} from "../dt/atif_method_parameters";
 import {AtifInputPolymerUI} from "./input/polymer";
 import {AtifPolymerParameters} from "../dt/atif_polymer_parameters";
+import ArrowForwardIosSharpIcon from '@mui/icons-material/ArrowForwardIosSharp';
 import {AtifInputSequenceUI} from "./input/sequence";
 import {AtifSequenceParameters} from "../dt/atif_sequence_parameters";
 import {AtifSizeParameters} from "../dt/atif_size_parameters";
@@ -24,7 +25,7 @@ import {AtifInputPermitemUI} from "./input/permitemlen";
 import {AtifIterativeParameters} from "../dt/atif_iterative_parameters";
 import {AtifInputIterativeUI} from "./input/iterative";
 import {AtifRunParameters} from "../dt/atif_run_parameters";
-import {TextField} from "@mui/material";
+import {Accordion, AccordionDetails, AccordionSummary, TextField} from "@mui/material";
 
 
 // App 展示组件
@@ -62,10 +63,16 @@ function AppComponent() {
 
 
     return <div>
-        <AtifInputMethodUI methodParameters={methodParameters}
-                           onMethodParameterChange={async (data) => {
-                               setMethodParameters(new AtifMethodParameters(data))
-                           }}/>
+        <Accordion>
+            <AccordionSummary
+                expandIcon={<ArrowForwardIosSharpIcon sx={{fontSize: '0.9rem'}}/>}>Method</AccordionSummary>
+            <AccordionDetails>
+                <AtifInputMethodUI methodParameters={methodParameters}
+                                   onMethodParameterChange={async (data) => {
+                                       setMethodParameters(new AtifMethodParameters(data))
+                                   }}/>
+            </AccordionDetails>
+        </Accordion>
         <AtifInputPolymerUI polymerParameters={polymerParameters}
                             onPolymerParametersChange={async (data) => {
                                 setPolymerParameters(new AtifPolymerParameters(data))
