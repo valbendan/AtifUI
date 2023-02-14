@@ -25,7 +25,16 @@ import {AtifInputPermitemUI} from "./input/permitemlen";
 import {AtifIterativeParameters} from "../dt/atif_iterative_parameters";
 import {AtifInputIterativeUI} from "./input/iterative";
 import {AtifRunParameters} from "../dt/atif_run_parameters";
-import {Accordion, AccordionDetails, AccordionSummary, TextField} from "@mui/material";
+import {
+    Accordion,
+    AccordionDetails,
+    AccordionSummary,
+    Card,
+    CardContent,
+    CardHeader,
+    TextField,
+    Typography
+} from "@mui/material";
 import {InputWrapperBlock} from "./blocks/input_wrapper";
 
 
@@ -63,107 +72,117 @@ function AppComponent() {
     run.filepath = filepath
 
 
-    return <div>
-        <InputWrapperBlock
-            name={"Method"}
-            innerUI={<AtifInputMethodUI
-                methodParameters={methodParameters}
-                onMethodParameterChange={async (data) => {
-                    setMethodParameters(new AtifMethodParameters(data))
-                }}/>}
-        />
-        <InputWrapperBlock
-            name={"Polymer"}
-            innerUI={
-                <AtifInputPolymerUI
-                    polymerParameters={polymerParameters}
-                    onPolymerParametersChange={async (data) => {
-                        setPolymerParameters(new AtifPolymerParameters(data))
-                    }}/>
-            }
-        />
-        <InputWrapperBlock
-            name={"Sequence"}
-            innerUI={
-                <AtifInputSequenceUI
-                    sequenceParameters={sequenceParameters}
-                    onSequenceParametersChange={async (data) => {
-                        setSequenceParameters(new AtifSequenceParameters(data))
-                    }}/>
-            }
-        />
-        <InputWrapperBlock
-            name={"Size"}
-            innerUI={
-                <AtifInputSizeUI
-                    sizeParameters={sizeParameters}
-                    onSizeParametersChange={async (data) => {
-                        setSizeParameters(new AtifSizeParameters(data))
-                    }}/>
-            }/>
-        <InputWrapperBlock
-            name={"Salt"}
-            innerUI={
-                <AtifInputSaltUI
-                    saltParameters={saltParameters}
-                    onSaltParametersChange={async (data) => {
-                        setSaltParameters(new AtifSaltParameters(data))
-                    }}/>
-            }
-        />
-        <InputWrapperBlock
-            name={"Wall"}
-            innerUI={
-                <AtifInputWallUI
-                    wallParameters={wallParameters}
-                    onWallParametersChange={async (data) => {
-                        setWallParameters(new AtifWallParameters(data))
-                    }}/>
-            }
-        />
-        <InputWrapperBlock
-            name={"Energy"}
-            innerUI={
-                <AtifInputEnergyUI
-                    energyParameters={energyParameters}
-                    onEnergyParametersChange={async (data) => {
-                        setEnergyParameters(new AtifEnergyParameters(data))
-                    }}/>
-            }/>
-        <InputWrapperBlock
-            name={"Valency"}
-            innerUI={
-                <AtifInputValencyUI
-                    valencyParameters={valencyParameters}
-                    onValencyParametersChange={async (data) => {
-                        setValencyParameters(new AtifValencyParameters(data))
-                    }}/>
-            }/>
-        <InputWrapperBlock name={"Diameter"} innerUI={
-            <AtifInputDiameterUI diameterParameters={diameterParameters}
-                                 onDiameterParametersChange={async (data) => {
-                                     setDiameterParameters(new AtifDiameterParameters(data))
-                                 }}/>
-        }/>
-        <InputWrapperBlock name={"Permitem"} innerUI={
-            <AtifInputPermitemUI permitemlenParameters={permitemlenParameters}
-                                 onPermitemParametersChange={async (data) => {
-                                     setPermitemlenParameters(new AtifPermitemlenParameters(data))
-                                 }}/>
-        }/>
-        <InputWrapperBlock name={"iterative"} innerUI={
-            <AtifInputIterativeUI iterativeParameters={iterativeParameters}
-                                  onIterativeParametersChange={async (data) => {
-                                      setIterativeParameters(new AtifIterativeParameters(data))
-                                  }}/>
-        }/>
+    return <div style={{display: "grid", gridTemplateColumns: "1fr 1fr", gap: "1em"}}>
+        <div>
 
-        <TextField value={filepath} type={"file"} label={"数据输出文件"}
-                   onChange={(event) => {
-                       setFilepath(event.target.value)
-                   }}/>
+            <InputWrapperBlock
+                name={"Method"}
+                innerUI={<AtifInputMethodUI
+                    methodParameters={methodParameters}
+                    onMethodParameterChange={async (data) => {
+                        setMethodParameters(new AtifMethodParameters(data))
+                    }}/>}
+            />
+            <InputWrapperBlock
+                name={"Polymer"}
+                innerUI={
+                    <AtifInputPolymerUI
+                        polymerParameters={polymerParameters}
+                        onPolymerParametersChange={async (data) => {
+                            setPolymerParameters(new AtifPolymerParameters(data))
+                        }}/>
+                }
+            />
+            <InputWrapperBlock
+                name={"Sequence"}
+                innerUI={
+                    <AtifInputSequenceUI
+                        sequenceParameters={sequenceParameters}
+                        onSequenceParametersChange={async (data) => {
+                            setSequenceParameters(new AtifSequenceParameters(data))
+                        }}/>
+                }
+            />
+            <InputWrapperBlock
+                name={"Size"}
+                innerUI={
+                    <AtifInputSizeUI
+                        sizeParameters={sizeParameters}
+                        onSizeParametersChange={async (data) => {
+                            setSizeParameters(new AtifSizeParameters(data))
+                        }}/>
+                }/>
+            <InputWrapperBlock
+                name={"Salt"}
+                innerUI={
+                    <AtifInputSaltUI
+                        saltParameters={saltParameters}
+                        onSaltParametersChange={async (data) => {
+                            setSaltParameters(new AtifSaltParameters(data))
+                        }}/>
+                }
+            />
+            <InputWrapperBlock
+                name={"Wall"}
+                innerUI={
+                    <AtifInputWallUI
+                        wallParameters={wallParameters}
+                        onWallParametersChange={async (data) => {
+                            setWallParameters(new AtifWallParameters(data))
+                        }}/>
+                }
+            />
+            <InputWrapperBlock
+                name={"Energy"}
+                innerUI={
+                    <AtifInputEnergyUI
+                        energyParameters={energyParameters}
+                        onEnergyParametersChange={async (data) => {
+                            setEnergyParameters(new AtifEnergyParameters(data))
+                        }}/>
+                }/>
+            <InputWrapperBlock
+                name={"Valency"}
+                innerUI={
+                    <AtifInputValencyUI
+                        valencyParameters={valencyParameters}
+                        onValencyParametersChange={async (data) => {
+                            setValencyParameters(new AtifValencyParameters(data))
+                        }}/>
+                }/>
+            <InputWrapperBlock name={"Diameter"} innerUI={
+                <AtifInputDiameterUI diameterParameters={diameterParameters}
+                                     onDiameterParametersChange={async (data) => {
+                                         setDiameterParameters(new AtifDiameterParameters(data))
+                                     }}/>
+            }/>
+            <InputWrapperBlock name={"Permitem"} innerUI={
+                <AtifInputPermitemUI permitemlenParameters={permitemlenParameters}
+                                     onPermitemParametersChange={async (data) => {
+                                         setPermitemlenParameters(new AtifPermitemlenParameters(data))
+                                     }}/>
+            }/>
+            <InputWrapperBlock name={"iterative"} innerUI={
+                <AtifInputIterativeUI iterativeParameters={iterativeParameters}
+                                      onIterativeParametersChange={async (data) => {
+                                          setIterativeParameters(new AtifIterativeParameters(data))
+                                      }}/>
+            }/>
 
-        <pre>{run.toString()}</pre>
+            <TextField value={filepath} type={"file"} label={"数据输出文件"}
+                       onChange={(event) => {
+                           setFilepath(event.target.value)
+                       }}/>
+
+        </div>
+        <div>
+            <Card>
+                <CardContent>
+                    <Typography variant={"h5"}>Parameter Preview:</Typography>
+                    <pre>{run.toString()}</pre>
+                </CardContent>
+            </Card>
+        </div>
     </div>
 }
 
