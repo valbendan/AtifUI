@@ -36,6 +36,7 @@ import {
     Typography
 } from "@mui/material";
 import {InputWrapperBlock} from "./blocks/input_wrapper";
+import {OutputFileBlock} from "./blocks/output_file_ui";
 
 
 // App 展示组件
@@ -169,10 +170,10 @@ function AppComponent() {
                                       }}/>
             }/>
 
-            <TextField value={filepath} type={"file"} label={"数据输出文件"}
-                       onChange={(event) => {
-                           setFilepath(event.target.value)
-                       }}/>
+            <OutputFileBlock filepath={filepath}
+                             onFilepathChange={async (filepath) => {
+                                 setFilepath(filepath)
+                             }}/>
 
         </div>
         <div>
