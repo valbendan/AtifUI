@@ -24,9 +24,6 @@ jobs:
           node-version: ${{ matrix.node-version }}
           cache: 'npm'
 
-      - name: Install wget
-        run: winget install wget
-
       - name: Download atif
         run: wget -P ./bin https://github.com/valbendan/Atif/releases/download/v1.0.3/AtifExe
 
