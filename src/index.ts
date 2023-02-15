@@ -29,6 +29,7 @@ const createWindow = (): void => {
       nodeIntegration: true,
       contextIsolation: false,
     },
+    icon: "./icon/logo.icon"
   });
 
   // 启用 electron/remote

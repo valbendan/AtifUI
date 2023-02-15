@@ -10,15 +10,24 @@ import {rendererConfig} from './webpack.renderer.config';
 
 const config: ForgeConfig = {
   packagerConfig: {
+    icon: "icon/logo",
     appCopyright: "Copyright © 2023 Atif",
-    extraResource: [],
+    extraResource: ["bin"],
   },
   rebuildConfig: {},
   makers: [
-    new MakerSquirrel({name: "AtifUI"}),
+    new MakerSquirrel({
+      name: "AtifUI",
+      iconUrl: "icon/logo.ico",
+      setupIcon: "icon/logo.ico",
+    }),
     new MakerZIP({}, ['darwin']),
     new MakerRpm({}),
-    new MakerDeb({}),
+    new MakerDeb({
+      options: {
+        icon: "icon/logo.png"
+      }
+    }),
   ],
   plugins: [
     new WebpackPlugin({
