@@ -129,6 +129,7 @@ function AppComponent() {
                 innerUI={
                     <AtifInputWallUI
                         wallParameters={wallParameters}
+                        blockNumber={polymerParameters.one.block_number + polymerParameters.two.block_number}
                         onWallParametersChange={async (data) => {
                             setWallParameters(new AtifWallParameters(data))
                         }} />
