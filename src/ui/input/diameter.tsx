@@ -7,12 +7,15 @@ import { MultiNumberValueTextField } from "../blocks/m_values";
 
 export function AtifInputDiameterUI(props: {
     diameterParameters: AtifDiameterParameters
+    blockNumber: number
     onDiameterParametersChange: (parameter: AtifDiameterParameters) => Promise<void>
 }) {
     const newData = new AtifDiameterParameters(structuredClone(props.diameterParameters))
 
     return <div>
         <MultiNumberValueTextField label={"diameter_block_number"}
+            error={props.diameterParameters.diameter_block_number.length != props.blockNumber}
+            helperText={`diameter_block_number should be equal to ${props.blockNumber}`}
             onMValuesChange={async (mValues) => {
                 newData.diameter_block_number = mValues
                 await props.onDiameterParametersChange(newData)

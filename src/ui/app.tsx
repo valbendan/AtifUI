@@ -156,6 +156,7 @@ function AppComponent() {
                 } />
             <InputWrapperBlock name={"Diameter"} innerUI={
                 <AtifInputDiameterUI diameterParameters={diameterParameters}
+                    blockNumber={polymerParameters.one.block_number + polymerParameters.two.block_number}
                     onDiameterParametersChange={async (data) => {
                         setDiameterParameters(new AtifDiameterParameters(data))
                     }} />

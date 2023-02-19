@@ -14,7 +14,7 @@ export function AtifInputEnergyUI(props: {
 
     const blockNumberPlus4 = props.blockNumber + 4
 
-    const helperText = "space error"
+    const helperText = `number should be equal to ${blockNumberPlus4}`
 
     const haveError = props.energyParameters.pw_block_number.length != blockNumberPlus4
 
@@ -23,7 +23,7 @@ export function AtifInputEnergyUI(props: {
     return <div>
         <MatrixNumberValueTextField
             error={ haveError}
-            helperText={helperText}
+            helperText={`number should be equal to row(${blockNumberPlus4}) x column(${blockNumberPlus4-4})`}
             label={"pw_block_number"}
             onMatrixValuesChange={async (matrixValue) => {
                 newData.pw_block_number = matrixValue
