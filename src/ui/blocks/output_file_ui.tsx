@@ -1,6 +1,7 @@
 import React from 'react';
 import {TextField} from "@mui/material";
 import Electron from "electron";
+// import {dialog} from "@electron/remote";
 
 // work around method: https://github.com/electron/remote/issues/91
 const dialog: Electron.Dialog = window.require('@electron/remote').dialog
