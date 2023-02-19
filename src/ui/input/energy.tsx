@@ -1,5 +1,5 @@
 import React from "react";
-import { TextField } from "@mui/material";
+import { TextField, Typography } from "@mui/material";
 
 import { doParseFloatValue } from "../utils/values";
 import { AtifEnergyParameters } from "../../dt/atif_energy_parameters";
@@ -21,6 +21,7 @@ export function AtifInputEnergyUI(props: {
     console.log(props.energyParameters)
 
     return <div>
+        <Typography >pairwise interaction of all species</Typography>
         <MatrixNumberValueTextField
             error={ haveError}
             helperText={`number should be equal to row(${blockNumberPlus4}) x column(${blockNumberPlus4-4})`}

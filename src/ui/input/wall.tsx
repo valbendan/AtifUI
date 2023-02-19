@@ -24,7 +24,7 @@ export function AtifInputWallUI(props: {
         <MultiNumberValueTextField
             label={"sf_block_number"}
             error={props.wallParameters.sf_block_number.length != props.blockNumber}
-            helperText={"cccccc"}
+            helperText={"Short-range external potential energy parameter!"}
             onMValuesChange={async (mValues) => {
                 newData.sf_block_number = mValues
                 await props.onWallParametersChange(newData)
@@ -35,6 +35,7 @@ export function AtifInputWallUI(props: {
         <TextField type={"number"}
             label={"positive_salt"}
             value={props.wallParameters.sf_positive_salt}
+            helperText={"Short-range external potential energy parameter!"}
             onChange={async (event) => {
                 newData.sf_positive_salt = doParseFloatValue(event.target.value, props.wallParameters.sf_positive_salt)
                 await props.onWallParametersChange(newData)
@@ -43,6 +44,7 @@ export function AtifInputWallUI(props: {
         <TextField type={"number"}
             label={"negative_salt"}
             value={props.wallParameters.sf_negative_salt}
+            helperText={"Short-range external potential energy parameter!"}
             onChange={async (event) => {
                 newData.sf_negative_salt = doParseFloatValue(event.target.value, props.wallParameters.sf_negative_salt)
                 await props.onWallParametersChange(newData)
@@ -51,6 +53,7 @@ export function AtifInputWallUI(props: {
         <TextField type={"number"}
             label={"positive_counterion"}
             value={props.wallParameters.sf_positive_counterion}
+            helperText={"Short-range external potential energy parameter!"}
             onChange={async (event) => {
                 newData.sf_positive_counterion = doParseFloatValue(event.target.value, props.wallParameters.sf_positive_counterion)
                 await props.onWallParametersChange(newData)
@@ -59,6 +62,7 @@ export function AtifInputWallUI(props: {
         <TextField type={"number"}
             label={"negative_counterion"}
             value={props.wallParameters.sf_negative_counterion}
+            helperText={"Short-range external potential energy parameter!"}
             onChange={async (event) => {
                 newData.sf_negative_counterion = doParseFloatValue(event.target.value, props.wallParameters.sf_negative_counterion)
                 await props.onWallParametersChange(newData)
@@ -67,6 +71,7 @@ export function AtifInputWallUI(props: {
         <TextField type={"number"}
             label={"solvent"}
             value={props.wallParameters.sf_solvent}
+            helperText={"Short-range external potential energy parameter!"}
             onChange={async (event) => {
                 newData.sf_solvent = doParseFloatValue(event.target.value, props.wallParameters.sf_solvent)
                 await props.onWallParametersChange(newData)
