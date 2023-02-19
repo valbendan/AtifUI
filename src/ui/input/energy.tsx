@@ -21,7 +21,6 @@ export function AtifInputEnergyUI(props: {
     console.log(props.energyParameters)
 
     return <div>
-        <Typography >pairwise interaction of all species</Typography>
         <MatrixNumberValueTextField
             error={ haveError}
             helperText={`number should be equal to row(${blockNumberPlus4}) x column(${blockNumberPlus4-4})`}

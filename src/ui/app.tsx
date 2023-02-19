@@ -124,8 +124,7 @@ function AppComponent() {
                         }} />
                 }
             />
-            <InputWrapperBlock
-                name={"Wall"}
+            <InputWrapperBlock name={"Wall"} subTitle={"interaction from wall"}
                 innerUI={
                     <AtifInputWallUI
                         wallParameters={wallParameters}
@@ -135,8 +134,7 @@ function AppComponent() {
                         }} />
                 }
             />
-            <InputWrapperBlock
-                name={"Energy"}
+            <InputWrapperBlock name={"Energy"} subTitle={"  pairwise interaction of all species"}
                 innerUI={
                     <AtifInputEnergyUI
                         energyParameters={energyParameters}

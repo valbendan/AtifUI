@@ -9,7 +9,7 @@ export function AtifInputSequenceUI(props: {
 }) {
     const newData = new AtifSequenceParameters(structuredClone(props.sequenceParameters))
 
-    const errorMsg = "sequence number is wrong[should equal to AtifPolymerParameters xxx]"
+    const errorMsg = `sequence number is wrong [should equal to blockNumber: ${props.blockNumber}]`
 
     return <div>
         <MultiNumberValueTextField
