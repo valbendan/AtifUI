@@ -13,49 +13,49 @@ export function AtifInputDiameterUI(props: {
     return <div>
         <TextField type={"number"}
                    label={"monomers"}
-                   value={props.diameterParameters.monomers}
+                   value={props.diameterParameters.diameter_block_number}
                    onChange={async (event) => {
-                       newData.monomers = doParseFloatValue(event.target.value, props.diameterParameters.monomers)
+                       newData.diameter_block_number = doParseFloatValue(event.target.value, props.diameterParameters.diameter_block_number)
                        await props.onDiameterParametersChange(newData)
                    }}/>
 
         <TextField type={"number"}
                    label={"positive_salt"}
-                   value={props.diameterParameters.positive_salt}
+                   value={props.diameterParameters.diameter_positive_salt}
                    onChange={async (event) => {
-                       newData.positive_salt = doParseFloatValue(event.target.value, props.diameterParameters.positive_salt)
+                       newData.diameter_positive_salt = doParseFloatValue(event.target.value, props.diameterParameters.diameter_positive_salt)
                        await props.onDiameterParametersChange(newData)
                    }}/>
 
         <TextField type={"number"}
                    label={"negative_salt"}
-                   value={props.diameterParameters.negative_salt}
+                   value={props.diameterParameters.diameter_negative_salt}
                    onChange={async (event) => {
-                       newData.negative_salt = doParseFloatValue(event.target.value, props.diameterParameters.negative_salt)
+                       newData.diameter_negative_salt = doParseFloatValue(event.target.value, props.diameterParameters.diameter_negative_salt)
                        await props.onDiameterParametersChange(newData)
                    }}/>
 
         <TextField type={"number"}
                    label={"positive_counterion"}
-                   value={props.diameterParameters.positive_counterion}
+                   value={props.diameterParameters.diameter_positive_counterion}
                    onChange={async (event) => {
-                       newData.positive_counterion = doParseFloatValue(event.target.value, props.diameterParameters.positive_counterion)
+                       newData.diameter_positive_counterion = doParseFloatValue(event.target.value, props.diameterParameters.diameter_positive_counterion)
                        await props.onDiameterParametersChange(newData)
                    }}/>
 
         <TextField type={"number"}
                    label={"negative_counterion"}
-                   value={props.diameterParameters.negative_counterion}
+                   value={props.diameterParameters.diameter_negative_counterion}
                    onChange={async (event) => {
-                       newData.negative_counterion = doParseFloatValue(event.target.value, props.diameterParameters.positive_counterion)
+                       newData.diameter_negative_counterion = doParseFloatValue(event.target.value, props.diameterParameters.diameter_positive_counterion)
                        await props.onDiameterParametersChange(newData)
                    }}/>
 
         <TextField type={"number"}
                    label={"hard_sphere_solvent"}
-                   value={props.diameterParameters.hard_sphere_solvent}
+                   value={props.diameterParameters.diameter_solvent}
                    onChange={async (event) => {
-                       newData.hard_sphere_solvent = doParseFloatValue(event.target.value, props.diameterParameters.hard_sphere_solvent)
+                       newData.diameter_solvent = doParseFloatValue(event.target.value, props.diameterParameters.diameter_solvent)
                        await props.onDiameterParametersChange(newData)
                    }}/>
     </div>

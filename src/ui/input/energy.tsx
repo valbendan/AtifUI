@@ -13,34 +13,34 @@ export function AtifInputEnergyUI(props: {
     return <div>
         <TextField type={"number"}
                    label={"positive salt"}
-                   value={props.energyParameters.positive_salt}
+                   value={props.energyParameters.pw_positive_salt}
                    onChange={async (event) => {
-                       newData.positive_salt = doParseFloatValue(event.target.value, props.energyParameters.positive_salt)
+                       newData.pw_positive_salt = doParseFloatValue(event.target.value, props.energyParameters.pw_positive_salt)
                        await props.onEnergyParametersChange(newData)
                    }}/>
 
 
         <TextField type={"number"}
                    label={"negative_salt"}
-                   value={props.energyParameters.negative_salt}
+                   value={props.energyParameters.pw_negative_salt}
                    onChange={async (event) => {
-                       newData.negative_salt = doParseFloatValue(event.target.value, props.energyParameters.negative_salt)
+                       newData.pw_negative_salt = doParseFloatValue(event.target.value, props.energyParameters.pw_negative_salt)
                        await props.onEnergyParametersChange(newData)
                    }}/>
 
         <TextField type={"number"}
                    label={"positive_counterions"}
-                   value={props.energyParameters.positive_counterions}
+                   value={props.energyParameters.pw_positive_counterions}
                    onChange={async (event) => {
-                       newData.positive_counterions = doParseFloatValue(event.target.value, props.energyParameters.positive_counterions)
+                       newData.pw_positive_counterions = doParseFloatValue(event.target.value, props.energyParameters.pw_positive_counterions)
                        await props.onEnergyParametersChange(newData)
                    }}/>
 
         <TextField type={"number"}
                    label={"negative counterions"}
-                   value={props.energyParameters.negative_counterions}
+                   value={props.energyParameters.pw_negative_counterions}
                    onChange={async (event) => {
-                       newData.negative_counterions = doParseFloatValue(event.target.value, props.energyParameters.negative_counterions)
+                       newData.pw_negative_counterions = doParseFloatValue(event.target.value, props.energyParameters.pw_negative_counterions)
                        await props.onEnergyParametersChange(newData)
                    }}/>
     </div>

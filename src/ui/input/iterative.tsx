@@ -38,17 +38,17 @@ export function AtifInputIterativeUI(props: {
 
         <TextField type={"number"}
                    label={"phL_L"}
-                   value={props.iterativeParameters.phL_L}
+                   value={props.iterativeParameters.guess_surface_potential}
                    onChange={async (event) => {
-                       newData.phL_L = doParseFloatValue(event.target.value, props.iterativeParameters.phL_L)
+                       newData.guess_surface_potential = doParseFloatValue(event.target.value, props.iterativeParameters.guess_surface_potential)
                        await props.onIterativeParametersChange(newData)
                    }}/>
 
         <TextField type={"number"}
                    label={"err_tol"}
-                   value={props.iterativeParameters.err_tol}
+                   value={props.iterativeParameters.error_tolerance}
                    onChange={async (event) => {
-                       newData.err_tol = doParseFloatValue(event.target.value, props.iterativeParameters.err_tol)
+                       newData.error_tolerance = doParseFloatValue(event.target.value, props.iterativeParameters.error_tolerance)
                        await props.onIterativeParametersChange(newData)
                    }}/>
     </div>

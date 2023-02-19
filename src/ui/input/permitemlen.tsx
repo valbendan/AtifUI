@@ -13,17 +13,17 @@ export function AtifInputPermitemUI(props: {
     return <div>
         <TextField type={"number"}
                    label={"solution"}
-                   value={props.permitemlenParameters.solution}
+                   value={props.permitemlenParameters.dielectric_solution}
                    onChange={async (event) => {
-                       newData.solution = doParseFloatValue(event.target.value, props.permitemlenParameters.solution)
+                       newData.dielectric_solution = doParseFloatValue(event.target.value, props.permitemlenParameters.dielectric_solution)
                        await props.onPermitemParametersChange(newData)
                    }}/>
 
         <TextField type={"number"}
                    label={"surfaces"}
-                   value={props.permitemlenParameters.surfaces}
+                   value={props.permitemlenParameters.dialectric_surfaces}
                    onChange={async (event) => {
-                       newData.surfaces = doParseFloatValue(event.target.value, props.permitemlenParameters.surfaces)
+                       newData.dialectric_surfaces = doParseFloatValue(event.target.value, props.permitemlenParameters.dialectric_surfaces)
                        await props.onPermitemParametersChange(newData)
                    }}/>
 
