@@ -14,33 +14,33 @@ export function AtifInputValencyUI(props: {
     return <div>
         <TextField type={"number"}
                    label={"salt_positive"}
-                   value={props.valencyParameters.salt_positive}
+                   value={props.valencyParameters.valency_salt_positive}
                    onChange={async (event) => {
-                       newData.salt_positive = doParseFloatValue(event.target.value, props.valencyParameters.salt_positive)
+                       newData.valency_salt_positive = doParseFloatValue(event.target.value, props.valencyParameters.valency_salt_positive)
                        await props.onValencyParametersChange(newData)
                    }}/>
 
         <TextField type={"number"}
                    label={"salt_negative"}
-                   value={props.valencyParameters.salt_negative}
+                   value={props.valencyParameters.valency_salt_negative}
                    onChange={async (event) => {
-                       newData.salt_negative = doParseFloatValue(event.target.value, props.valencyParameters.salt_negative)
+                       newData.valency_salt_negative = doParseFloatValue(event.target.value, props.valencyParameters.valency_salt_negative)
                        await props.onValencyParametersChange(newData)
                    }}/>
 
         <TextField type={"number"}
                    label={"counterion_positive"}
-                   value={props.valencyParameters.counterion_positive}
+                   value={props.valencyParameters.valency_counterion_positive}
                    onChange={async (event) => {
-                       newData.counterion_positive = doParseFloatValue(event.target.value, props.valencyParameters.counterion_positive)
+                       newData.valency_counterion_positive = doParseFloatValue(event.target.value, props.valencyParameters.valency_counterion_positive)
                        await props.onValencyParametersChange(newData)
                    }}/>
 
         <TextField type={"number"}
                    label={"counterion_negative"}
-                   value={props.valencyParameters.counterion_negative}
+                   value={props.valencyParameters.valency_counterion_negative}
                    onChange={async (event) => {
-                       newData.counterion_negative = doParseFloatValue(event.target.value, props.valencyParameters.counterion_negative)
+                       newData.valency_counterion_negative = doParseFloatValue(event.target.value, props.valencyParameters.valency_counterion_negative)
                        await props.onValencyParametersChange(newData)
                    }}/>
     </div>

@@ -1,7 +1,7 @@
 // /*Dielectric constant: solution, surfaces; temperature (K); length unit of system**/
 export class AtifPermitemlenParameters {
-  public solution = 0
-  public surfaces = 0
+  public dielectric_solution = 0
+  public dialectric_surfaces = 0
   public temperature = 0
   public length_unit_of_system = 0
 
@@ -17,7 +17,7 @@ export class AtifPermitemlenParameters {
   public toString(): string {
     return `
 PERMITEMLEN:
-${this.solution}, ${this.surfaces}, ${this.temperature}, ${this.length_unit_of_system}
+${this.dielectric_solution}, ${this.dialectric_surfaces}, ${this.temperature}, ${this.length_unit_of_system}
 `
   }
 }

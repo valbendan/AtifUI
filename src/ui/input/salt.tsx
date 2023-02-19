@@ -12,18 +12,18 @@ export function AtifInputSaltUI(props: {
 
     return <div>
         <TextField type={"number"}
-                   label={"M"}
-                   value={props.saltParameters.M}
+                   label={"salt_concentration"}
+                   value={props.saltParameters.salt_concentration}
                    onChange={async (event) => {
-                       newData.M = doParseFloatValue(event.target.value, props.saltParameters.M)
+                       newData.salt_concentration = doParseFloatValue(event.target.value, props.saltParameters.salt_concentration)
                        await props.onSaltParametersChange(newData)
                    }}/>
 
         <TextField type={"number"}
-                   label={"volume"}
-                   value={props.saltParameters.volume}
+                   label={"volume_fraction"}
+                   value={props.saltParameters.volume_fraction}
                    onChange={async (event) => {
-                       newData.volume = doParseFloatValue(event.target.value, props.saltParameters.volume)
+                       newData.volume_fraction = doParseFloatValue(event.target.value, props.saltParameters.volume_fraction)
                        await props.onSaltParametersChange(newData)
                    }}/>
     </div>

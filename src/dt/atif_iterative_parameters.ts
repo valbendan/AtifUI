@@ -6,8 +6,8 @@ export class AtifIterativeParameters {
   public max_itera = 0
   public mix_coe = 0
   public cstep = 0
-  public phL_L = 0
-  public err_tol = 0
+  public guess_surface_potential = 0
+  public error_tolerance = 0
 
   constructor(data: AtifIterativeParameters | null = null) {
     if (data == null) {
@@ -19,7 +19,7 @@ export class AtifIterativeParameters {
   public toString(): string {
     return `
 ITERATIVE:
-${this.max_itera}; ${this.mix_coe}; ${this.cstep}; ${this.phL_L}; ${this.err_tol}
+${this.max_itera}; ${this.mix_coe}; ${this.cstep}; ${this.guess_surface_potential}; ${this.error_tolerance}
 `
   }
 }

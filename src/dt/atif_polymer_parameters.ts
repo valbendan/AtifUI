@@ -5,11 +5,11 @@
 // POLYMER:
 // 0.1, 40, 1, Flexible, 0; 0.0, 0, 0, Flexible, 0
 export class AtifPolymerData {
-  public mp = 0
-  public nb_blocks = 0
-  public grafting_density = 0
-  public monomer_density = 0
+  public monomer_concentration = 0
+  public polymerization = 0
+  public block_number = 0
   public chain_model = ""
+  public bending_potential = 0
 
   constructor(data: AtifPolymerData | null) {
     if (data == null) {
@@ -20,7 +20,7 @@ export class AtifPolymerData {
 
   // todo 修正格式化参数
   public toString(): string {
-    return `${this.chain_model} ${this.mp} ${this.nb_blocks} ${this.grafting_density} ${this.monomer_density}`
+    return `${this.monomer_concentration} ${this.polymerization} ${this.block_number} ${this.chain_model} ${this.bending_potential}`
   }
 }
 

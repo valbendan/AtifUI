@@ -1,10 +1,10 @@
 // /*****Set valency. Salt(positive : negative); counterion(positive : negative)*****/
 export class AtifValencyParameters {
 
-  public salt_positive = 0
-  public salt_negative = 0
-  public counterion_positive = 0
-  public counterion_negative = 0
+  public valency_salt_positive = 0
+  public valency_salt_negative = 0
+  public valency_counterion_positive = 0
+  public valency_counterion_negative = 0
 
   constructor(data: AtifValencyParameters | null = null) {
     if (data == null) {
@@ -19,7 +19,7 @@ export class AtifValencyParameters {
   public toString(): string {
     return `
 VALENCY:
-${this.salt_positive} : ${this.salt_negative}; ${this.counterion_positive} : ${this.counterion_negative}
+${this.valency_salt_positive} : ${this.valency_salt_negative}; ${this.valency_counterion_positive} : ${this.valency_counterion_negative}
 `
   }
 }

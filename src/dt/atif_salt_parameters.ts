@@ -3,8 +3,8 @@
 // 0.0; 0.74
 export class AtifSaltParameters {
 
-  public M = 0
-  public volume = 0
+  public salt_concentration = 0
+  public volume_fraction = 0
 
   constructor(data: AtifSaltParameters | null = null) {
     if (data != null) {
@@ -15,7 +15,7 @@ export class AtifSaltParameters {
   public toString(): string {
     return `
 SALT_HS:
-${this.M}; ${this.volume}
+${this.salt_concentration}; ${this.volume_fraction}
 `
   }
 

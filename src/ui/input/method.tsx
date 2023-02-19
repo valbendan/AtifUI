@@ -20,7 +20,7 @@ export function AtifInputMethodUI(props: AtifInputMethodUIProps) {
                 return <TextField {...args}
                                   value={props.methodParameters.method}
                                   label={"method"}
-                                  helperText={"本次运行的方法: DFT 或 SCFT"}/>
+                                  helperText={"The molecular theory is: DFT or SCFT"}/>
             }}
             onChange={async (event, value) => {
                 newMethodParameters.method = value
@@ -34,7 +34,7 @@ export function AtifInputMethodUI(props: AtifInputMethodUIProps) {
                 return <TextField {...args}
                                   value={props.methodParameters.geometry}
                                   label={"geometry"}
-                                  helperText={"geometry"}
+                                  helperText={"the geometrical molecualr model."}
                                   onChange={async (event) => {
                                       newMethodParameters.geometry = event.target.value
                                       await props.onMethodParameterChange(newMethodParameters)
@@ -51,8 +51,8 @@ export function AtifInputMethodUI(props: AtifInputMethodUIProps) {
             renderInput={(args) => {
                 return <TextField {...args}
                                   value={props.methodParameters.surface}
-                                  label={"surface"}
-                                  helperText={"surface"}/>
+                                  label={"surface number"}
+                                  helperText={"two is confined systems,otherwise,single."}/>
             }}
             onChange={async (event, value) => {
                 newMethodParameters.surface = value
@@ -65,7 +65,7 @@ export function AtifInputMethodUI(props: AtifInputMethodUIProps) {
             renderInput={(args) => {
                 return <TextField {...args}
                                   value={props.methodParameters.srep}
-                                  label={"srep"}
+                                  label={"external potential model"}
                                   helperText={"the model of short-range external potential: LJ(Lenard-Jones)/SW(Square-well) potential"}
                 />
             }}
