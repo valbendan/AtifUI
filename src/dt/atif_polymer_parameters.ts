@@ -8,7 +8,7 @@ export class AtifPolymerData {
   public monomer_concentration = 0
   public polymerization = 0
   public block_number = 0
-  public chain_model = ""
+  public chain_model: "flexible" | "rod" | "semi-flexible" | string = "flexible"
   public bending_potential = 0
 
   constructor(data: AtifPolymerData | null) {
