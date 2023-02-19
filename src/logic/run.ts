@@ -34,15 +34,20 @@ export class RunLogic {
 
     atif.stdin.write(this.parameters.toString() + "\n")
 
+    atif.stdout.setEncoding('utf8');
     atif.stdout.on('data', async (chunk) => {
+      console.log("stdout", chunk)
       await this.stdoutCallback(chunk)
     })
 
+    atif.stderr.setEncoding('utf8');
     atif.stderr.on('data', async (chunk) => {
+      console.log("stderr", chunk)
       await this.stderrCallback(chunk)
     })
 
     atif.on('exit', async (code, signal) => {
+      console.log("exit", code)
       await this.doneCallback(code)
     })
   }

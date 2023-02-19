@@ -96,15 +96,19 @@ ipcMain.handle(globalEvents.event_atif_start_run,
     // and load the index.html of the app.
     await runWindow.loadURL(RUN_WINDOW_WEBPACK_ENTRY);
 
+    if (!app.isPackaged) {
+      runWindow.webContents.openDevTools()
+    }
+
     const logic = new RunLogic(run,
       async (chunk) => {
-        await runWindow.webContents.postMessage("stdout", chunk)
+        await runWindow.webContents.send("stdout", chunk)
       },
       async (chunk) => {
-        await runWindow.webContents.postMessage("stderr", chunk)
+        await runWindow.webContents.send("stderr", chunk)
       },
       async (code) => {
-        await runWindow.webContents.postMessage("exit", code)
+        await runWindow.webContents.send("exit", code)
       })
 
     logic.doRun()
