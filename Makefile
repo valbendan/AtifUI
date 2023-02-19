@@ -7,3 +7,7 @@ run:
 
 outdated:
 	yarn outdated
+
+# download from https://github.com/valbendan/Atif/releases
+download-atif-macos:
+	cd bin && wget https://github.com/valbendan/Atif/releases/download/v1.0.3/AtifExe.macOS
