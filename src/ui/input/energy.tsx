@@ -1,47 +1,57 @@
 import React from "react";
-import {TextField} from "@mui/material";
+import { TextField } from "@mui/material";
 
-import {doParseFloatValue} from "../utils/values";
-import {AtifEnergyParameters} from "../../dt/atif_energy_parameters";
+import { doParseFloatValue } from "../utils/values";
+import { AtifEnergyParameters } from "../../dt/atif_energy_parameters";
+import { MultiNumberValueTextField } from "../blocks/m_values";
 
 export function AtifInputEnergyUI(props: {
     energyParameters: AtifEnergyParameters
+    blockNumber: number
     onEnergyParametersChange: (parameter: AtifEnergyParameters) => Promise<void>
 }) {
     const newData = new AtifEnergyParameters(structuredClone(props.energyParameters))
 
+    const blockNumberPlus4 = props.blockNumber + 4
+
+    const helperText = "space error"
+
+
     return <div>
-        <TextField type={"number"}
-                   label={"positive salt"}
-                   value={props.energyParameters.pw_positive_salt}
-                   onChange={async (event) => {
-                       newData.pw_positive_salt = doParseFloatValue(event.target.value, props.energyParameters.pw_positive_salt)
-                       await props.onEnergyParametersChange(newData)
-                   }}/>
+        <MultiNumberValueTextField
+            error={props.energyParameters.pw_positive_salt.length != blockNumberPlus4}
+            helperText={helperText}
+            label={"pw_positive_salt"}
+            onMValuesChange={async (mValues) => {
+                newData.pw_positive_salt = mValues
+                await props.onEnergyParametersChange(newData)
+            }} />
 
+        <MultiNumberValueTextField
+            error={props.energyParameters.pw_negative_salt.length != blockNumberPlus4}
+            helperText={helperText}
+            label={"pw_negative_salt"}
+            onMValuesChange={async (mValues) => {
+                newData.pw_negative_salt = mValues
+                await props.onEnergyParametersChange(newData)
+            }} />
 
-        <TextField type={"number"}
-                   label={"negative_salt"}
-                   value={props.energyParameters.pw_negative_salt}
-                   onChange={async (event) => {
-                       newData.pw_negative_salt = doParseFloatValue(event.target.value, props.energyParameters.pw_negative_salt)
-                       await props.onEnergyParametersChange(newData)
-                   }}/>
+        <MultiNumberValueTextField
+            error={props.energyParameters.pw_positive_counterions.length != blockNumberPlus4}
+            helperText={helperText}
+            label={"pw_positive_counterions"}
+            onMValuesChange={async (mValues) => {
+                newData.pw_positive_counterions = mValues
+                await props.onEnergyParametersChange(newData)
+            }} />
 
-        <TextField type={"number"}
-                   label={"positive_counterions"}
-                   value={props.energyParameters.pw_positive_counterions}
-                   onChange={async (event) => {
-                       newData.pw_positive_counterions = doParseFloatValue(event.target.value, props.energyParameters.pw_positive_counterions)
-                       await props.onEnergyParametersChange(newData)
-                   }}/>
-
-        <TextField type={"number"}
-                   label={"negative counterions"}
-                   value={props.energyParameters.pw_negative_counterions}
-                   onChange={async (event) => {
-                       newData.pw_negative_counterions = doParseFloatValue(event.target.value, props.energyParameters.pw_negative_counterions)
-                       await props.onEnergyParametersChange(newData)
-                   }}/>
+        <MultiNumberValueTextField
+            error={props.energyParameters.pw_negative_counterions.length != blockNumberPlus4}
+            helperText={helperText}
+            label={"pw_negative_counterions"}
+            onMValuesChange={async (mValues) => {
+                newData.pw_negative_counterions = mValues
+                await props.onEnergyParametersChange(newData)
+            }} />
     </div>
 }
