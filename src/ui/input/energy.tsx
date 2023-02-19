@@ -3,7 +3,7 @@ import { TextField } from "@mui/material";
 
 import { doParseFloatValue } from "../utils/values";
 import { AtifEnergyParameters } from "../../dt/atif_energy_parameters";
-import { MultiNumberValueTextField } from "../blocks/m_values";
+import { MatrixNumberValueTextField, MultiNumberValueTextField } from "../blocks/m_values";
 
 export function AtifInputEnergyUI(props: {
     energyParameters: AtifEnergyParameters
@@ -16,8 +16,21 @@ export function AtifInputEnergyUI(props: {
 
     const helperText = "space error"
 
+    const haveError = props.energyParameters.pw_block_number.length != blockNumberPlus4
+
+    console.log(props.energyParameters)
 
     return <div>
+        <MatrixNumberValueTextField
+            error={ haveError}
+            helperText={helperText}
+            label={"pw_block_number"}
+            onMatrixValuesChange={async (matrixValue) => {
+                newData.pw_block_number = matrixValue
+                await props.onEnergyParametersChange(newData)
+            }} />
+
+
         <MultiNumberValueTextField
             error={props.energyParameters.pw_positive_salt.length != blockNumberPlus4}
             helperText={helperText}

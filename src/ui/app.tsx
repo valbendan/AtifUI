@@ -140,6 +140,7 @@ function AppComponent() {
                 innerUI={
                     <AtifInputEnergyUI
                         energyParameters={energyParameters}
+                        blockNumber={polymerParameters.one.block_number + polymerParameters.two.block_number}
                         onEnergyParametersChange={async (data) => {
                             setEnergyParameters(new AtifEnergyParameters(data))
                         }} />

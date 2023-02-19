@@ -1,6 +1,22 @@
 import React from "react";
-import { TextField } from "@mui/material";
+import { TextField, TextareaAutosize, TextareaAutosizeProps } from "@mui/material";
 import { TextFieldProps } from "@mui/material/TextField/TextField";
+
+
+export function MatrixNumberValueTextField(props: {
+    onMatrixValuesChange: (values: number[][]) => Promise<void>,
+} & TextFieldProps) {
+    return <TextField   {...props}
+        rows={2}
+        multiline={true}
+        value={props.value}
+        onChange={async (event) => {
+            const mValues = doParseLineNumber(event.target.value)
+            if (mValues.length > 0) {
+                await props.onMatrixValuesChange(mValues)
+            }
+        }} />
+}
 
 export function MultiNumberValueTextField(props: {
     onMValuesChange: (values: number[]) => Promise<void>,
@@ -36,4 +52,11 @@ function doParseNumber(s: string): number[] {
     } else {
         return ret
     }
+}
+
+function doParseLineNumber(s: string): number[][] {
+    const lines = s.split("\n")
+    return lines.map((line): number[] => {
+        return doParseNumber(line)
+    })
 }
