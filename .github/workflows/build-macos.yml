@@ -1,0 +1,37 @@
+name: Build macOS CI
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build:
+
+    runs-on: macos-latest
+
+    strategy:
+      matrix:
+        node-version: [ 18.x ]
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: 'npm'
+
+      - name: Download atif
+        run: wget -P ./bin https://github.com/valbendan/Atif/releases/download/v1.0.3/AtifExe.macOS
+
+      - run: yarn install
+
+      - run: yarn package
+
+      - uses: actions/upload-artifact@v3
+        with:
+          name: macos
+          path: out

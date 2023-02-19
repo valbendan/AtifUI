@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>ATIF v1.0</title>
+  <meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline';"/>
+</head>
+
+<style>
+  * {
+    margin: 0;
+    padding: 0;
+  }
+
+  .w {
+    width: 1200px;
+    height: auto;
+  }
+
+
+  .tooltip {
+    position: relative;
+    display: inline-block;
+    border-bottom: 1px dotted black;
+  }
+
+  .tooltip .tooltiptext {
+    visibility: hidden;
+    width: 360px;
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+
+    /* 定位 */
+    position: absolute;
+    z-index: 1;
+  }
+
+  .tooltip:hover .tooltiptext {
+    visibility: visible;
+  }
+
+  .main_pad {
+    height: 42px;
+    margin: 30px auto;
+  }
+
+  button {
+    font-size: .8em;
+    cursor: pointer;
+    outline: none;
+    padding: 0.75em 2em;
+    border-radius: 2em;
+    display: inline-block;
+    color: #fff;
+    background-color: #4fc08d;
+    transition: all 0.15s ease;
+    box-sizing: border-box;
+    border: 1px solid #4fc08d;
+  }
+
+
+  li {
+    list-style: none;
+  }
+
+  .dev_method {
+
+    margin-left: 60px;
+  }
+
+  .dev_method ul li {
+    float: left;
+  }
+
+  .mainlab {
+    float: left;
+    width: 200px;
+    height: 3000px;
+    background: rgba(2, 244, 219, 0.3);
+  }
+
+  .mainlab ul li {
+    font-size: 14px;
+    height: 30px;
+    line-height: 40px;
+  }
+
+  .mainiInput {
+    float: left;
+    width: 500px;
+    height: 3000px;
+    background: rgba(2, 244, 219, 0.3);
+  }
+
+  .mainiInput ul li {
+    font-size: 14px;
+    height: 30px;
+    line-height: 40px;
+  }
+
+  .mainiInput ul li input {
+    height: 28px;
+    border: 1px solid #00a4ff;
+    font-size: 20px;
+  }
+
+  .POLYMER {
+    width: 200px;
+    height: 900px;
+    margin-left: 60px;
+  }
+
+  .POLYMER ul li {
+    float: left;
+  }
+
+  .subPOLYMER {
+    float: left;
+    width: 200px;
+    height: 260px;
+    background: rgba(0, 0, 0, 0.3);
+  }
+
+  .subPOLYMER ul li {
+    font-size: 14px;
+    height: 30px;
+    line-height: 40px;
+  }
+</style>
+
+
+<body>
+<div class="main_pad w">
+
+  <div class="w">
+    <div class="mainlab"></div>
+    <div class="mainlab">
+      <ul>
+        <li>METHOD:</li>
+        <li>GEOMETRY:</li>
+        <li>SURFACE:</li>
+        <li class="tooltip">SREP:<span class="tooltiptext">SHORT-RANGE EXTERNAL POTENTIAL</span></li>
+        <li>BRUSH OR FREE:</li>
+        <li class="tooltip">Charge shell model: <span class="tooltiptext">B&A: parameters in charge shell model</span>
+        </li>
+        <li style="text-indent: 1cm;">B:</li>
+        <li style="text-indent: 1cm;">A:</li>
+        <!---->
+        <hr>
+      </ul>
+      <ul>
+        <li>POLYMER:</li>
+        <li style="text-indent: 1cm;">POLYMER-1:</li>
+        <li style="text-indent: 2cm;" class="tooltip"><span class="tooltiptext"
+                                                            style="text-indent: 0cm;">1/sigma^2</span>grafting density:
+        </li>
+        <li style="text-indent: 2cm;" class="tooltip">monomer density:<span class="tooltiptext"
+                                                                            style="text-indent: 0cm;">1/sigma^3</span>
+        </li>
+        <li style="text-indent: 2cm;" class="tooltip">mp1:<span class="tooltiptext" style="text-indent: 0cm;">polymerization</span>
+        </li>
+        <li style="text-indent: 2cm;" class="tooltip">nb1: <span class="tooltiptext" style="text-indent: 0cm;">numbers of blocks</span>
+        </li>
+        <li style="text-indent: 2cm;" class="tooltip">Chain Model:</li>
+
+        <li style="text-indent: 1cm;">POLYMER-2:</li>
+        <li style="text-indent: 2cm;" class="tooltip"><span class="tooltiptext"
+                                                            style="text-indent: 0cm;">1/sigma^2</span>grafting density:
+        </li>
+        <li style="text-indent: 2cm;" class="tooltip">monomer density:<span class="tooltiptext"
+                                                                            style="text-indent: 0cm;">1/sigma^3</span>
+        </li>
+        <li style="text-indent: 2cm;" class="tooltip">mp2:<span class="tooltiptext" style="text-indent: 0cm;">polymerization</span>
+        </li>
+        <li style="text-indent: 2cm;" class="tooltip">nb2: <span class="tooltiptext" style="text-indent: 0cm;">numbers of blocks</span>
+        </li>
+        <li style="text-indent: 2cm;" class="tooltip">Chain Model:</li>
+        <!---->
+      </ul>
+      <hr>
+      <ul>
+        <li>SEQUENCE:</li>
+        <li style="text-indent: 1cm;" class="tooltip"><span class="tooltiptext">each block of poly-1: mb1[]</span>monomer1:
+        </li>
+        <li style="text-indent: 1cm;" class="tooltip"><span class="tooltiptext">each block of poly-2: mb2[]</span>monomer2:
+        </li>
+        <li style="text-indent: 1cm;" class="tooltip">valency1[]:
+          <span class="tooltiptext">valency of each block of poly-1</span></li>
+        <li style="text-indent: 1cm;" class="tooltip">valency2[]:
+          <span class="tooltiptext">valency of each block of poly-2</span></li>
+      </ul>
+
+      <hr>
+
+      <ul>
+        <li>SIZE:</li>
+        <li style="text-indent: 1cm;" class="tooltip">box size:
+          <span class="tooltiptext" style="text-indent: 0cm;">box size</span>
+        </li>
+
+        <li style="text-indent: 1cm;" class="tooltip">step length:
+          <span class="tooltiptext" style="text-indent: 0cm;">step length</span></li>
+
+      </ul>
+
+      <ul>
+        <li class="tooltip">SALT_HS:
+          <span class="tooltiptext">
+                            Salt concentration [M] and total volume fraction (for incompressible system)
+                        </span></li>
+      </ul>
+
+      <ul>
+        <li class="tooltip">WALL(C/m^2):
+          <span class="tooltiptext">
+                            External potential. 
+                            Surface charge density: (C/m^2).
+                            Short-range force: monomers, positive salt, negative salt, positive counterion, negative counterion, solvent
+                        </span>
+        </li>
+        <li style="text-indent: 1cm;" class="tooltip">
+          Surface charge density:
+          <span class="tooltiptext" style="text-indent: 0cm;">C/m^2</span>
+        </li>
+        <li style="text-indent: 1cm;" class="tooltip"><span class="tooltiptext">
+                        monomers:
+                        <span class="tooltiptext" style="text-indent: 0cm;">monomers</span>
+        </li>
+        <li style="text-indent: 1cm;" class="tooltip">
+          positive salt:
+          <span class="tooltiptext" style="text-indent: 0cm;">positive salt</span>
+        </li>
+        <li style="text-indent: 1cm;" class="tooltip">
+          negative salt:
+          <span class="tooltiptext" style="text-indent: 0cm;">negative salt</span>
+        </li>
+        <li style="text-indent: 1cm;" class="tooltip">
+          positive counterion:
+          <span class="tooltiptext" style="text-indent: 0cm;">positive counterion</span>
+        </li>
+        <li style="text-indent: 1cm;" class="tooltip">
+          negative counterion:
+          <span class="tooltiptext" style="text-indent: 0cm;">negative counterion</span></li>
+        <li style="text-indent: 1cm;" class="tooltip">
+          solvent:
+          <span class="tooltiptext" style="text-indent: 0cm;">solvent</span></li>
+
+      </ul>
+
+      <ul>
+        <li class="tooltip">ENERGY:
+          <span class="tooltiptext" style="text-indent: 0cm;">
+                            Set pairwise interaction (kBT): monomers; positive salt; negative salt; positive 
+                            counterions; negative counterions</span></li>
+        <li></li>
+        <li></li>
+        <li></li>
+
+      </ul>
+
+      <ul>
+        <li class="tooltip">VALENCY(Set valency):
+          <span class="tooltiptext">Set valency</span></li>
+        <li style="text-indent: 2cm;" class="tooltip">
+          Salt:
+          <span class="tooltiptext" style="text-indent: 0cm;">positive : negative</span>
+        </li>
+        <li style="text-indent: 2cm;" class="tooltip">
+          ounterion:
+          <span class="tooltiptext" style="text-indent: 0cm;">positive : negative</span>
+        </li>
+
+      </ul>
+
+      <ul>
+        <li class="tooltip">DIAMETER&nbsp;:&nbsp;&nbsp;<span class="tooltiptext">Set diameters</span></li>
+        <li style="text-indent: 1cm;" class="tooltip">
+          Monomers:
+          <span class="tooltiptext" style="text-indent: 0cm;">Monomers</span>
+        </li>
+        <li style="text-indent: 1cm;" class="tooltip">
+          positive salt:
+          <span class="tooltiptext" style="text-indent: 0cm;">positive salt</span>
+        </li>
+        <li style="text-indent: 1cm;" class="tooltip">
+          negative salt:
+          <span class="tooltiptext" style="text-indent: 0cm;">negative salt</span>
+        </li>
+        <li style="text-indent: 1cm;" class="tooltip">
+          positive counterion:
+          <span class="tooltiptext" style="text-indent: 0cm;">positive counterion</span>
+        </li>
+
+        <li style="text-indent: 1cm;" class="tooltip">
+          negative counterion:
+          <span class="tooltiptext" style="text-indent: 0cm;">negative counterion</span>
+        </li>
+        <li style="text-indent: 1cm;" class="tooltip">
+          hard sphere solvent:
+          <span class="tooltiptext" style="text-indent: 0cm;"> hard sphere solvent</span>
+        </li>
+
+      </ul>
+
+      <ul>
+        <li class="tooltip">PERMITEMLEN:
+          <span class="tooltiptext">Dielectric constant</span>
+        </li>
+        <li style="text-indent: 2cm;" class="tooltip">
+          solution:
+          <span class="tooltiptext" style="text-indent: 0cm;">solution</span></li>
+        <li style="text-indent: 2cm;" class="tooltip">surfaces:
+          <span class="tooltiptext" style="text-indent: 0cm;">surfaces</span></li>
+        <li style="text-indent: 2cm;" class="tooltip">temperature (K):
+          <span class="tooltiptext" style="text-indent: 0cm;">temperature (K)</span></li>
+        <li style="text-indent: 2cm;" class="tooltip">len unit of system:
+          <span class="tooltiptext" style="text-indent: 0cm;">length unit of system</span></li>
+
+      </ul>
+      <ul>
+        <li class="tooltip">ITERATIVE:
+          <span class="tooltiptext">Iterative parameters</span></li>
+
+        <li style="text-indent: 2cm;" class="tooltip">
+          maxItera:
+          <span class="tooltiptext" style="text-indent: 0cm;">maximum iteration</span>
+        </li>
+        <li style="text-indent: 2cm;" class="tooltip">
+          mixCoe:
+          <span class="tooltiptext" style="text-indent: 0cm;">Picard mixture</span>
+        </li>
+        <li style="text-indent: 2cm;" class="tooltip">
+          cstep:
+          <span class="tooltiptext" style="text-indent: 0cm;">Charging step (K)</span>
+        </li>
+        <li style="text-indent: 2cm;" class="tooltip">phL_L:
+          <span class="tooltiptext" style="text-indent: 0cm;">Guess surface potential</span>
+        </li>
+        <li style="text-indent: 2cm;" class="tooltip">errTol:
+          <span class="tooltiptext" style="text-indent: 0cm;">Error tolerancel</span>
+        </li>
+
+      </ul>
+      <ul>
+        <li style="text-indent: 2cm;">
+          <button id="saveToBtn">输出到</button>
+        </li>
+        <li></li>
+        <li style="text-indent: 2cm;">
+          <button name="计算" type="calbtn" id="calBtn" onclick="testLs()">点我计算</button>
+        </li>
+
+      </ul>
+    </div>
+
+    <div class="mainiInput">
+      <ul>
+        <li>
+          <input list="method" id="xmethod" onchange="changeMethod()">
+          <datalist id="method">
+            <option value="DFT">
+            <option value="SCFT">
+          </datalist>
+          <span id="methodTxt"></span>
+        </li>
+
+        <li>
+          <input list="geometry" id="xgeometry">
+          <datalist id="geometry">
+            <option value="Planar">
+            <option value="Spherical">
+            <option value="Cylindrical">
+          </datalist>
+        </li>
+
+        <li>
+          <input list="surface" id="xsurface">
+          <datalist id="surface">
+            <option value="Single">
+            <option value="Two">
+          </datalist>
+        </li>
+        <li>
+          <input list="srep" id="xsrep">
+          <datalist id="srep">
+            <option value="HW">
+            <option value="LJ">
+            <option value="SW">
+          </datalist>
+        </li>
+
+        <li>
+          <input list="brush" id="xbrush">
+          <datalist id="brush">
+            <option value="brush">
+            <option value="free">
+          </datalist>
+        </li>
+        <li></li>
+        <li>
+          <input type="text" name="ChargeB" id="ChargeB">
+        </li>
+        <li>
+          <input type="text" name="ChargeA" id="ChargeA">
+        </li>
+      </ul>
+
+      <ul>
+        <li></li>
+        <li></li>
+
+        <li>
+          <input type="text" name="graftingDensity" id="graftingDensity1">
+        </li>
+
+        <li>
+          <input type="text" name="monomerDensity" id="monomerDensity1">
+        </li>
+
+        <li>
+          <input type="text" name="mp1" id="mp1"> <br>
+        </li>
+
+        <li>
+          <input type="text" name="nb1" id="nb1">
+        </li>
+
+        <li>
+          <input list="chainModel1" id="xchainModel1">:
+          <datalist id="chainModel1">
+            <option value="Flexible">
+            <option value="other">
+          </datalist>
+        </li>
+
+        <li></li>
+
+        <li>
+          <input type="text" name="graftingDensity" id="graftingDensity2">
+        </li>
+
+        <li>
+          <input type="text" name="monomerDensity" id="monomerDensity2">
+        </li>
+
+        <li>
+          <input type="text" name="mp2" id="mp2"> <br>
+        </li>
+
+        <li>
+          <input type="text" name="nb2" id="nb2">
+        </li>
+
+        <li>
+          <input list="chainModel2" id="xchainModel2">:
+          <datalist id="chainModel2">
+            <option value="Flexible">
+            <option value="other">
+          </datalist>
+        </li>
+      </ul>
+
+      <ul>
+        <li></li>
+        <li>
+          <input type="text" name="monomer1" id="monomer1">
+        </li>
+        <li>
+          <input type="text" name="monomer2" id="monomer2">
+        </li>
+        <li>
+          <input type="text" name="z1" id="z1">
+        </li>
+        <li>
+          <input type="text" name="z2" id="z2">
+        </li>
+      </ul>
+
+      <ul>
+        <li></li>
+        <li>
+          <input type="text" name="boxSize" id="boxSize">
+        </li>
+        <li>
+          <input type="text" name="stepLen" id="stepLen">
+        </li>
+      </ul>
+
+      <ul>
+        <li>
+          <input type="text" name="saltHs" id="saltHs">
+        </li>
+      </ul>
+
+      <ul>
+        <li></li>
+        <li>
+          <input type="text" name="scd1" id="scd1">
+        </li>
+        <li>
+          <input type="text" name="monomer1" id="monomer1">
+        </li>
+        <li>
+          <input type="text" name="pSalt" id="pSalt">
+        </li>
+        <li>
+          <input type="text" name="nSalt" id="nSalt">
+        </li>
+        <li>
+          <input type="text" name="pCounterion" id="pCounterion">
+        </li>
+        <li>
+          <input type="text" name="nCounterion" id="nCounterion">
+        </li>
+        <li>
+          <input type="text" name="solvent1" id="solvent1">
+        </li>
+      </ul>
+
+      <ul>
+        <li></li>
+        <textarea rows="6" cols="30" name="energy1" id="energy1"></textarea>
+      </ul>
+
+      <ul>
+        <li></li>
+        <li><input type="text" name="pSaltr" id="pSaltr">:<input type="text" name="nSaltr" id="nSaltr"></li>
+        <li>
+          <input type="text" name="pcounterionr" id="pcounterionr">:<input type="text" name="ncounterionr"
+                                                                           id="ncounterionr">
+        </li>
+      </ul>
+
+      <ul>
+        <li></li>
+        <li>
+          <input type="text" name="diaMonomer1" id="diaMonomer1">
+        </li>
+
+        <li>
+          <input type="text" name="diaPSalt1" id="diaPSalt1">
+        </li>
+
+        <li>
+          <input type="text" name="diaNSalt1" id="diaNSalt1">
+        </li>
+
+        <li>
+          <input type="text" name="diaPcounterion1" id="diaPcounterion1">
+        </li>
+
+        <li>
+          <input type="text" name="diaNcounterion1" id="diaNcounterion1">
+        </li>
+
+        <li>
+          <input type="text" name="diaHSpS1" id="diaHSpS1">
+        </li>
+      </ul>
+
+      <ul>
+        <li></li>
+        <li>
+          <input type="text" name="solution1" id="solution1">
+        </li>
+
+        <li>
+          <input type="text" name="surfaces1" id="surfaces1">
+        </li>
+
+        <li>
+          <input type="text" name="temperature1" id="temperature1">
+        </li>
+
+        <li>
+          <input type="text" name="lenUnOfSys1" id="lenUnOfSys1">
+        </li>
+      </ul>
+
+      <ul>
+        <li></li>
+        <li>
+          <input type="text" name="maxItera1" id="maxItera1">
+
+        </li>
+        <li>
+          <input type="text" name="mixCoe1" id="mixCoe1">
+        </li>
+
+        <li>
+          <input type="text" name="cstep1" id="cstep1">
+        </li>
+        <li>
+          <input type="text" name="phL_L1" id="phL_L1">
+        </li>
+
+        <li>
+          <input type="text" name="errTol1" id="errTol1">
+        </li>
+      </ul>
+
+    </div>
+
+  </div>
+</div>
+
+
+<hr>
+</body>
+
+</html>
