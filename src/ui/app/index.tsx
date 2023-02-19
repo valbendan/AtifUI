@@ -1,42 +1,34 @@
-import React, { useState } from 'react';
-import { createRoot } from 'react-dom/client';
-import { getBrowserLogger } from "../../log/browser";
-import { AtifInputMethodUI } from "../input/method";
-import { AtifMethodParameters } from "../../dt/atif_method_parameters";
-import { AtifInputPolymerUI } from "../input/polymer";
-import { AtifPolymerParameters } from "../../dt/atif_polymer_parameters";
-import ArrowForwardIosSharpIcon from '@mui/icons-material/ArrowForwardIosSharp';
-import { AtifInputSequenceUI } from "../input/sequence";
-import { AtifSequenceParameters } from "../../dt/atif_sequence_parameters";
-import { AtifSizeParameters } from "../../dt/atif_size_parameters";
-import { AtifInputSizeUI } from "../input/size";
-import { AtifSaltParameters } from "../../dt/atif_salt_parameters";
-import { AtifInputSaltUI } from "../input/salt";
-import { AtifWallParameters } from "../../dt/atif_wall_parameters";
-import { AtifInputWallUI } from "../input/wall";
-import { AtifEnergyParameters } from "../../dt/atif_energy_parameters";
-import { AtifInputEnergyUI } from "../input/energy";
-import { AtifValencyParameters } from "../../dt/atif_valency_parameters";
-import { AtifInputValencyUI } from "../input/valency";
-import { AtifDiameterParameters } from "../../dt/atif_diameter_parameters";
-import { AtifInputDiameterUI } from "../input/diameter";
-import { AtifPermitemlenParameters } from "../../dt/atif_permitemlen_parameters";
-import { AtifInputPermitemUI } from "../input/permitemlen";
-import { AtifIterativeParameters } from "../../dt/atif_iterative_parameters";
-import { AtifInputIterativeUI } from "../input/iterative";
-import { AtifRunParameters } from "../../dt/atif_run_parameters";
-import {
-    Accordion,
-    AccordionDetails,
-    AccordionSummary,
-    Card,
-    CardContent,
-    CardHeader,
-    TextField,
-    Typography
-} from "@mui/material";
-import { InputWrapperBlock } from "../blocks/input_wrapper";
-import { OutputFileBlock } from "../blocks/output_file_ui";
+import React, {useState} from 'react';
+import {createRoot} from 'react-dom/client';
+import {getBrowserLogger} from "../../log/browser";
+import {AtifInputMethodUI} from "../input/method";
+import {AtifMethodParameters} from "../../dt/atif_method_parameters";
+import {AtifInputPolymerUI} from "../input/polymer";
+import {AtifPolymerParameters} from "../../dt/atif_polymer_parameters";
+import {AtifInputSequenceUI} from "../input/sequence";
+import {AtifSequenceParameters} from "../../dt/atif_sequence_parameters";
+import {AtifSizeParameters} from "../../dt/atif_size_parameters";
+import {AtifInputSizeUI} from "../input/size";
+import {AtifSaltParameters} from "../../dt/atif_salt_parameters";
+import {AtifInputSaltUI} from "../input/salt";
+import {AtifWallParameters} from "../../dt/atif_wall_parameters";
+import {AtifInputWallUI} from "../input/wall";
+import {AtifEnergyParameters} from "../../dt/atif_energy_parameters";
+import {AtifInputEnergyUI} from "../input/energy";
+import {AtifValencyParameters} from "../../dt/atif_valency_parameters";
+import {AtifInputValencyUI} from "../input/valency";
+import {AtifDiameterParameters} from "../../dt/atif_diameter_parameters";
+import {AtifInputDiameterUI} from "../input/diameter";
+import {AtifPermitemlenParameters} from "../../dt/atif_permitemlen_parameters";
+import {AtifInputPermitemUI} from "../input/permitemlen";
+import {AtifIterativeParameters} from "../../dt/atif_iterative_parameters";
+import {AtifInputIterativeUI} from "../input/iterative";
+import {AtifRunParameters} from "../../dt/atif_run_parameters";
+import {Button, Card, CardContent, Typography} from "@mui/material";
+import {InputWrapperBlock} from "../blocks/input_wrapper";
+import {OutputFileBlock} from "../blocks/output_file_ui";
+import {ipcRenderer} from "electron";
+import {globalEvents} from "../../events";
 
 
 // App 展示组件
@@ -73,7 +65,7 @@ function AppComponent() {
     run.filepath = filepath
 
 
-    return <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "1em" }}>
+    return <div style={{display: "grid", gridTemplateColumns: "1fr 1fr", gap: "1em"}}>
         <div>
 
             <InputWrapperBlock
@@ -82,7 +74,7 @@ function AppComponent() {
                     methodParameters={methodParameters}
                     onMethodParameterChange={async (data) => {
                         setMethodParameters(new AtifMethodParameters(data))
-                    }} />}
+                    }}/>}
             />
             <InputWrapperBlock
                 name={"Polymer"}
@@ -91,7 +83,7 @@ function AppComponent() {
                         polymerParameters={polymerParameters}
                         onPolymerParametersChange={async (data) => {
                             setPolymerParameters(new AtifPolymerParameters(data))
-                        }} />
+                        }}/>
                 }
             />
             <InputWrapperBlock
@@ -102,7 +94,7 @@ function AppComponent() {
                         blockNumber={polymerParameters.one.block_number + polymerParameters.two.block_number}
                         onSequenceParametersChange={async (data) => {
                             setSequenceParameters(new AtifSequenceParameters(data))
-                        }} />
+                        }}/>
                 }
             />
             <InputWrapperBlock
@@ -112,8 +104,8 @@ function AppComponent() {
                         sizeParameters={sizeParameters}
                         onSizeParametersChange={async (data) => {
                             setSizeParameters(new AtifSizeParameters(data))
-                        }} />
-                } />
+                        }}/>
+                }/>
             <InputWrapperBlock
                 name={"Salt"}
                 innerUI={
@@ -121,28 +113,28 @@ function AppComponent() {
                         saltParameters={saltParameters}
                         onSaltParametersChange={async (data) => {
                             setSaltParameters(new AtifSaltParameters(data))
-                        }} />
+                        }}/>
                 }
             />
             <InputWrapperBlock name={"Wall"} subTitle={"interaction from wall"}
-                innerUI={
-                    <AtifInputWallUI
-                        wallParameters={wallParameters}
-                        blockNumber={polymerParameters.one.block_number + polymerParameters.two.block_number}
-                        onWallParametersChange={async (data) => {
-                            setWallParameters(new AtifWallParameters(data))
-                        }} />
-                }
+                               innerUI={
+                                   <AtifInputWallUI
+                                       wallParameters={wallParameters}
+                                       blockNumber={polymerParameters.one.block_number + polymerParameters.two.block_number}
+                                       onWallParametersChange={async (data) => {
+                                           setWallParameters(new AtifWallParameters(data))
+                                       }}/>
+                               }
             />
             <InputWrapperBlock name={"Energy"} subTitle={"  pairwise interaction of all species"}
-                innerUI={
-                    <AtifInputEnergyUI
-                        energyParameters={energyParameters}
-                        blockNumber={polymerParameters.one.block_number + polymerParameters.two.block_number}
-                        onEnergyParametersChange={async (data) => {
-                            setEnergyParameters(new AtifEnergyParameters(data))
-                        }} />
-                } />
+                               innerUI={
+                                   <AtifInputEnergyUI
+                                       energyParameters={energyParameters}
+                                       blockNumber={polymerParameters.one.block_number + polymerParameters.two.block_number}
+                                       onEnergyParametersChange={async (data) => {
+                                           setEnergyParameters(new AtifEnergyParameters(data))
+                                       }}/>
+                               }/>
             <InputWrapperBlock
                 name={"Valency"}
                 innerUI={
@@ -150,34 +142,38 @@ function AppComponent() {
                         valencyParameters={valencyParameters}
                         onValencyParametersChange={async (data) => {
                             setValencyParameters(new AtifValencyParameters(data))
-                        }} />
-                } />
+                        }}/>
+                }/>
             <InputWrapperBlock name={"Diameter"} innerUI={
                 <AtifInputDiameterUI diameterParameters={diameterParameters}
-                    blockNumber={polymerParameters.one.block_number + polymerParameters.two.block_number}
-                    onDiameterParametersChange={async (data) => {
-                        setDiameterParameters(new AtifDiameterParameters(data))
-                    }} />
-            } />
+                                     blockNumber={polymerParameters.one.block_number + polymerParameters.two.block_number}
+                                     onDiameterParametersChange={async (data) => {
+                                         setDiameterParameters(new AtifDiameterParameters(data))
+                                     }}/>
+            }/>
             <InputWrapperBlock name={"Permitem"} innerUI={
                 <AtifInputPermitemUI permitemlenParameters={permitemlenParameters}
-                    onPermitemParametersChange={async (data) => {
-                        setPermitemlenParameters(new AtifPermitemlenParameters(data))
-                    }} />
-            } />
+                                     onPermitemParametersChange={async (data) => {
+                                         setPermitemlenParameters(new AtifPermitemlenParameters(data))
+                                     }}/>
+            }/>
             <InputWrapperBlock name={"iterative"} innerUI={
                 <AtifInputIterativeUI iterativeParameters={iterativeParameters}
-                    onIterativeParametersChange={async (data) => {
-                        setIterativeParameters(new AtifIterativeParameters(data))
-                    }} />
-            } />
+                                      onIterativeParametersChange={async (data) => {
+                                          setIterativeParameters(new AtifIterativeParameters(data))
+                                      }}/>
+            }/>
 
             <InputWrapperBlock name={"File"} innerUI={
                 <OutputFileBlock filepath={filepath}
-                    onFilepathChange={async (filepath) => {
-                        setFilepath(filepath)
-                    }} />
-            } />
+                                 onFilepathChange={async (filepath) => {
+                                     setFilepath(filepath)
+                                 }}/>
+            }/>
+
+            <Button variant={"outlined"} onClick={async () => {
+                await ipcRenderer.invoke(globalEvents.event_atif_start_run, run)
+            }}>Run</Button>
 
         </div>
         <div>
@@ -193,4 +189,4 @@ function AppComponent() {
 
 const root = createRoot(document.querySelector("#root"));
 
-root.render(<AppComponent />)
+root.render(<AppComponent/>)

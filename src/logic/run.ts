@@ -9,8 +9,20 @@ import {findAtifBinPath} from "./utils";
 export class RunLogic {
   private parameters: AtifRunParameters
 
-  constructor(parameter: AtifRunParameters) {
+  private readonly stdoutCallback: (chunk: string) => Promise<void>
+  private readonly stderrCallback: (chunk: string) => Promise<void>
+  private readonly doneCallback: (code: number) => Promise<void>
+
+  constructor(
+    parameter: AtifRunParameters,
+    stdoutCallback: (chunk: string) => Promise<void>,
+    stderrCallback: (chunk: string) => Promise<void>,
+    doneCallback: (code: number) => Promise<void>
+  ) {
     this.parameters = parameter
+    this.stdoutCallback = stdoutCallback
+    this.stderrCallback = stderrCallback
+    this.doneCallback = doneCallback
   }
 
 
@@ -22,22 +34,16 @@ export class RunLogic {
 
     atif.stdin.write(this.parameters.toString() + "\n")
 
-    atif.stdout.on('data', () => {
-      return
+    atif.stdout.on('data', async (chunk) => {
+      await this.stdoutCallback(chunk)
     })
 
-    atif.stdout.on('close', () => {
-      return
+    atif.stderr.on('data', async (chunk) => {
+      await this.stderrCallback(chunk)
     })
 
-    atif.stderr.on('data', () => {
-      return
-    })
-
-    atif.on('exit', (code, signal) => {
-      return
+    atif.on('exit', async (code, signal) => {
+      await this.doneCallback(code)
     })
   }
-
-
 }
