@@ -1,10 +1,11 @@
 import React from 'react';
 import {TextField} from "@mui/material";
-import Electron from "electron";
+import {ipcRenderer} from 'electron';
+import {globalEvents} from "../../events";
 // import {dialog} from "@electron/remote";
 
 // work around method: https://github.com/electron/remote/issues/91
-const dialog: Electron.Dialog = window.require('@electron/remote').dialog
+// const dialog: Electron.Dialog = window.require('@electron/remote').dialog
 
 /**
  * 输出文件选择
@@ -18,14 +19,8 @@ export function OutputFileBlock(props: {
     return <TextField value={props.filepath} label={"数据输出文件"}
                       disabled={true}
                       onClick={async () => {
-                          const filepathList = await dialog.showSaveDialog({
-                              title: "Save output file to ...",
-                              message: "Save compute output file to",
-                              filters: [{name: "atif", extensions: ['.txt']}],
-                          })
-                          if (filepathList.filePath) {
-                              await props.onFilepathChange(filepathList.filePath)
-                          }
+                          const filepath = await ipcRenderer.invoke(globalEvents.event_dialog_open_save_file)
+                          await props.onFilepathChange(filepath)
                       }}
     />
 

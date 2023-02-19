@@ -44,12 +44,10 @@
     "electron-log": "^5.0.0-beta.16",
     "electron-settings": "^4.0.2",
     "electron-squirrel-startup": "^1.0.0",
-    "@electron/remote": "^2.0.9",
     "@mui/material": "^5.11.8",
     "@mui/icons-material": "^5.11.9",
     "@emotion/react": "^11.10.5",
     "@emotion/styled": "^11.10.5",
-    "path-browserify": "^1.0.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   }

@@ -9,12 +9,14 @@ rules.push({
 });
 
 export const rendererConfig: Configuration = {
+  target: 'electron-renderer',
   module: {
     rules,
   },
   plugins,
   resolve: {
     extensions: ['.js', '.ts', '.jsx', '.tsx', '.css'],
+    fallback: {}
   },
-  devtool: 'source-map'
+  // devtool: 'source-map'
 };
