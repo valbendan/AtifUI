@@ -3,6 +3,7 @@ import {TextField} from "@mui/material";
 
 import {doParseFloatValue} from "../utils/values";
 import {AtifDiameterParameters} from "../../dt/atif_diameter_parameters";
+import { MultiNumberValueTextField } from "../blocks/m_values";
 
 export function AtifInputDiameterUI(props: {
     diameterParameters: AtifDiameterParameters
@@ -11,13 +12,11 @@ export function AtifInputDiameterUI(props: {
     const newData = new AtifDiameterParameters(structuredClone(props.diameterParameters))
 
     return <div>
-        <TextField type={"number"}
-                   label={"monomers"}
-                   value={props.diameterParameters.diameter_block_number}
-                   onChange={async (event) => {
-                       newData.diameter_block_number = doParseFloatValue(event.target.value, props.diameterParameters.diameter_block_number)
-                       await props.onDiameterParametersChange(newData)
-                   }}/>
+        <MultiNumberValueTextField label={"diameter_block_number"}
+            onMValuesChange={async (mValues) => {
+                newData.diameter_block_number = mValues
+                await props.onDiameterParametersChange(newData)
+            }} />
 
         <TextField type={"number"}
                    label={"positive_salt"}

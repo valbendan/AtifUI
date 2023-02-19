@@ -21,7 +21,7 @@ export class AtifDiameterParameters {
   public toString(): string {
     return `
 DIAMETER:
-${this.diameter_block_number}; ${this.diameter_positive_salt}; ${this.diameter_negative_salt}; ${this.diameter_positive_counterion}; ${this.diameter_negative_counterion}; ${this.diameter_solvent}
+${this.diameter_block_number.join("; ")}; ${this.diameter_positive_salt}; ${this.diameter_negative_salt}; ${this.diameter_positive_counterion}; ${this.diameter_negative_counterion}; ${this.diameter_solvent}
 `
   }
 }
