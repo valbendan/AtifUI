@@ -67,7 +67,6 @@ function AppComponent() {
 
     return <div style={{display: "grid", gridTemplateColumns: "1fr 1fr", gap: "1em"}}>
         <div>
-
             <InputWrapperBlock
                 name={"Method"}
                 innerUI={<AtifInputMethodUI
@@ -171,10 +170,13 @@ function AppComponent() {
                                  }}/>
             }/>
 
-            <Button variant={"outlined"} onClick={async () => {
-                await ipcRenderer.invoke(globalEvents.event_atif_start_run, run)
-            }}>Run</Button>
 
+            <div style={{display: "flex", justifyContent: "center", paddingTop: "1em"}}>
+                <Button variant={"outlined"}
+                        onClick={async () => {
+                            await ipcRenderer.invoke(globalEvents.event_atif_start_run, run)
+                        }}>Run</Button>
+            </div>
         </div>
         <div>
             <Card>

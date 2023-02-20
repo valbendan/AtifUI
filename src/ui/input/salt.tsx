@@ -1,5 +1,5 @@
 import React from "react";
-import {TextField} from "@mui/material";
+import {TextField, Stack} from "@mui/material";
 
 import {doParseFloatValue} from "../utils/values";
 import {AtifSaltParameters} from "../../dt/atif_salt_parameters";
@@ -10,7 +10,7 @@ export function AtifInputSaltUI(props: {
 }) {
     const newData = new AtifSaltParameters(structuredClone(props.saltParameters))
 
-    return <div>
+    return <Stack spacing={2}>
         <TextField type={"number"}
                    label={"salt_concentration"}
                    value={props.saltParameters.salt_concentration}
@@ -26,5 +26,5 @@ export function AtifInputSaltUI(props: {
                        newData.volume_fraction = doParseFloatValue(event.target.value, props.saltParameters.volume_fraction)
                        await props.onSaltParametersChange(newData)
                    }}/>
-    </div>
+    </Stack>
 }

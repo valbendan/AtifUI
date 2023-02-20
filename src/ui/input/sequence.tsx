@@ -1,6 +1,7 @@
 import React from "react";
-import { AtifSequenceParameters } from "../../dt/atif_sequence_parameters";
-import { MultiNumberValueTextField } from "../blocks/m_values";
+import {Stack} from "@mui/material";
+import {AtifSequenceParameters} from "../../dt/atif_sequence_parameters";
+import {MultiNumberValueTextField} from "../blocks/m_values";
 
 export function AtifInputSequenceUI(props: {
     sequenceParameters: AtifSequenceParameters
@@ -11,7 +12,7 @@ export function AtifInputSequenceUI(props: {
 
     const errorMsg = `sequence number is wrong [should equal to blockNumber: ${props.blockNumber}]`
 
-    return <div>
+    return <Stack spacing={2}>
         <MultiNumberValueTextField
             label={"block_monomer_number1"}
             helperText={errorMsg}
@@ -19,7 +20,7 @@ export function AtifInputSequenceUI(props: {
             onMValuesChange={async (values) => {
                 newData.block_monomer_number1 = values
                 await props.onSequenceParametersChange(newData)
-            }} />
+            }}/>
 
         <MultiNumberValueTextField
             label={"block_monomer_number2"}
@@ -28,7 +29,7 @@ export function AtifInputSequenceUI(props: {
             onMValuesChange={async (values) => {
                 newData.block_monomer_number2 = values
                 await props.onSequenceParametersChange(newData)
-            }} />
+            }}/>
 
         <MultiNumberValueTextField
             label={"block_valency1"}
@@ -37,7 +38,7 @@ export function AtifInputSequenceUI(props: {
             onMValuesChange={async (values) => {
                 newData.block_valency1 = values
                 await props.onSequenceParametersChange(newData)
-            }} />
+            }}/>
 
         <MultiNumberValueTextField
             label={"block_valency2"}
@@ -46,6 +47,6 @@ export function AtifInputSequenceUI(props: {
             onMValuesChange={async (values) => {
                 newData.block_valency2 = values
                 await props.onSequenceParametersChange(newData)
-            }} />
-    </div>
+            }}/>
+    </Stack>
 }

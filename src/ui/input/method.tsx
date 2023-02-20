@@ -1,5 +1,5 @@
 import React from "react";
-import {TextField, Autocomplete} from "@mui/material";
+import {TextField, Stack, Autocomplete} from "@mui/material";
 
 import {AtifMethodParameters} from "../../dt/atif_method_parameters";
 import {doParseFloatValue} from "../utils/values";
@@ -13,7 +13,7 @@ interface AtifInputMethodUIProps {
 export function AtifInputMethodUI(props: AtifInputMethodUIProps) {
     const newMethodParameters = new AtifMethodParameters(structuredClone(props.methodParameters))
 
-    return <>
+    return <Stack spacing={2}>
         <Autocomplete
             value={props.methodParameters.method}
             renderInput={(args) => {
@@ -98,7 +98,7 @@ export function AtifInputMethodUI(props: AtifInputMethodUIProps) {
                 await props.onMethodParameterChange(newMethodParameters)
             }}
         />
-    </>
+    </Stack>
 }
 
 

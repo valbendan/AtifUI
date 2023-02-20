@@ -1,5 +1,5 @@
 import React from "react";
-import {TextField} from "@mui/material";
+import {TextField, Stack} from "@mui/material";
 
 import {AtifSizeParameters} from "../../dt/atif_size_parameters";
 import {doParseFloatValue} from "../utils/values";
@@ -10,7 +10,7 @@ export function AtifInputSizeUI(props: {
 }) {
     const newData = new AtifSizeParameters(structuredClone(props.sizeParameters))
 
-    return <div>
+    return <Stack spacing={2}>
         <TextField type={"number"}
                    label={"box size"}
                    value={props.sizeParameters.box_size}
@@ -26,5 +26,5 @@ export function AtifInputSizeUI(props: {
                        newData.step_length = doParseFloatValue(event.target.value, props.sizeParameters.step_length)
                        await props.onSizeParametersChange(newData)
                    }}/>
-    </div>
+    </Stack>
 }

@@ -1,5 +1,5 @@
 import React from "react";
-import {TextField} from "@mui/material";
+import {TextField, Stack} from "@mui/material";
 
 import {doParseFloatValue} from "../utils/values";
 import {AtifValencyParameters} from "../../dt/atif_valency_parameters";
@@ -11,7 +11,7 @@ export function AtifInputValencyUI(props: {
 }) {
     const newData = new AtifValencyParameters(structuredClone(props.valencyParameters))
 
-    return <div>
+    return <Stack spacing={2}>
         <TextField type={"number"}
                    label={"salt_positive"}
                    value={props.valencyParameters.valency_salt_positive}
@@ -43,5 +43,5 @@ export function AtifInputValencyUI(props: {
                        newData.valency_counterion_negative = doParseFloatValue(event.target.value, props.valencyParameters.valency_counterion_negative)
                        await props.onValencyParametersChange(newData)
                    }}/>
-    </div>
+    </Stack>
 }

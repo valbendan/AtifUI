@@ -1,5 +1,5 @@
 import React from "react";
-import {TextField} from "@mui/material";
+import {TextField, Stack} from "@mui/material";
 
 import {doParseFloatValue} from "../utils/values";
 import {AtifIterativeParameters} from "../../dt/atif_iterative_parameters";
@@ -10,7 +10,7 @@ export function AtifInputIterativeUI(props: {
 }) {
     const newData = new AtifIterativeParameters(structuredClone(props.iterativeParameters))
 
-    return <div>
+    return <Stack spacing={2}>
         <TextField type={"number"}
                    label={"max_itera"}
                    value={props.iterativeParameters.max_itera}
@@ -51,5 +51,5 @@ export function AtifInputIterativeUI(props: {
                        newData.error_tolerance = doParseFloatValue(event.target.value, props.iterativeParameters.error_tolerance)
                        await props.onIterativeParametersChange(newData)
                    }}/>
-    </div>
+    </Stack>
 }

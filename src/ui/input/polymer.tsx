@@ -1,5 +1,5 @@
 import React from "react";
-import {Autocomplete, TextField, Typography} from "@mui/material";
+import {Autocomplete, Stack, TextField, Typography} from "@mui/material";
 import {AtifPolymerData, AtifPolymerParameters} from "../../dt/atif_polymer_parameters";
 import {doParseFloatValue} from "../utils/values";
 
@@ -9,7 +9,7 @@ function AtifInputPolymerDataUI(props: {
     onPolymerDataChange: (data: AtifPolymerData) => Promise<void>
 }) {
     const newData = new AtifPolymerData(structuredClone(props.polymerData))
-    return <div>
+    return <Stack spacing={2}>
         <TextField type={"number"}
                    label={"monomer_concentration"}
                    value={props.polymerData.monomer_concentration}
@@ -55,7 +55,7 @@ function AtifInputPolymerDataUI(props: {
                        newData.bending_potential = doParseFloatValue(event.target.value, props.polymerData.bending_potential)
                        await props.onPolymerDataChange(newData)
                    }}/>
-    </div>
+    </Stack>
 }
 
 export function AtifInputPolymerUI(props: {
@@ -64,8 +64,8 @@ export function AtifInputPolymerUI(props: {
 }) {
     const newData = structuredClone(props.polymerParameters)
 
-    return <div>
-        <Typography variant={"h5"} padding={"1em"}>Polymer species 1:</Typography>
+    return <Stack spacing={2}>
+        <Typography variant={"h5"}>Polymer species 1:</Typography>
 
         <AtifInputPolymerDataUI polymerData={props.polymerParameters.one}
                                 onPolymerDataChange={async (data) => {
@@ -73,12 +73,12 @@ export function AtifInputPolymerUI(props: {
                                     await props.onPolymerParametersChange(newData)
                                 }}/>
 
-        <Typography variant={"h5"} padding={"1em"}>Polymer species 2:</Typography>
+        <Typography variant={"h5"}>Polymer species 2:</Typography>
 
         <AtifInputPolymerDataUI polymerData={props.polymerParameters.two}
                                 onPolymerDataChange={async (data) => {
                                     newData.two = data
                                     await props.onPolymerParametersChange(newData)
                                 }}/>
-    </div>
+    </Stack>
 }
