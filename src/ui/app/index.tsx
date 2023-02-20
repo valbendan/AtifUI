@@ -90,7 +90,8 @@ function AppComponent() {
                 innerUI={
                     <AtifInputSequenceUI
                         sequenceParameters={sequenceParameters}
-                        blockNumber={polymerParameters.one.block_number + polymerParameters.two.block_number}
+                        blockNumber1={polymerParameters.one.block_number}
+                        blockNumber2={polymerParameters.two.block_number}
                         onSequenceParametersChange={async (data) => {
                             setSequenceParameters(new AtifSequenceParameters(data))
                         }}/>
