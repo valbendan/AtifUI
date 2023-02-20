@@ -70,12 +70,15 @@ app.on('activate', () => {
 
 
 ipcMain.handle(globalEvents.event_dialog_open_save_file, async (): Promise<string> => {
-  const filepathList = await dialog.showSaveDialog({
+  const filepathList = await dialog.showOpenDialog({
     title: "Save output file to ...",
-    message: "Save compute output file to",
-    filters: [{name: "atif", extensions: ['.txt']}],
+    message: "Save compute output file to ...",
+    properties: ['openDirectory']
   })
-  return filepathList.filePath
+  if (filepathList.filePaths.length > 0) {
+    return filepathList.filePaths[0]
+  }
+  return null
 })
 
 
