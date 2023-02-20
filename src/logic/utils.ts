@@ -10,11 +10,11 @@ import * as os from "os";
 function findAtifBinName(): string {
   switch (os.platform()) {
     case "darwin":
-      return "Atif.macOS"
+      return "AtifExe.macOS"
     case "win32":
-      return "Atif.exe"
+      return "AtifExe.exe"
     default:
-      return "Atif"
+      return "AtifExe"
   }
 }
 
