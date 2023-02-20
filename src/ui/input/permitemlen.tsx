@@ -1,5 +1,5 @@
 import React from "react";
-import {TextField} from "@mui/material";
+import {TextField, Stack} from "@mui/material";
 
 import {doParseFloatValue} from "../utils/values";
 import {AtifPermitemlenParameters} from "../../dt/atif_permitemlen_parameters";
@@ -10,7 +10,7 @@ export function AtifInputPermitemUI(props: {
 }) {
     const newData = new AtifPermitemlenParameters(structuredClone(props.permitemlenParameters))
 
-    return <div>
+    return <Stack spacing={2}>
         <TextField type={"number"}
                    label={"solution"}
                    value={props.permitemlenParameters.dielectric_solution}
@@ -42,5 +42,5 @@ export function AtifInputPermitemUI(props: {
                        newData.length_unit_of_system = doParseFloatValue(event.target.value, props.permitemlenParameters.length_unit_of_system)
                        await props.onPermitemParametersChange(newData)
                    }}/>
-    </div>
+    </Stack>
 }

@@ -1,9 +1,8 @@
 import React from "react";
-import { TextField, Typography } from "@mui/material";
+import {Stack} from "@mui/material";
 
-import { doParseFloatValue } from "../utils/values";
-import { AtifEnergyParameters } from "../../dt/atif_energy_parameters";
-import { MatrixNumberValueTextField, MultiNumberValueTextField } from "../blocks/m_values";
+import {AtifEnergyParameters} from "../../dt/atif_energy_parameters";
+import {MatrixNumberValueTextField, MultiNumberValueTextField} from "../blocks/m_values";
 
 export function AtifInputEnergyUI(props: {
     energyParameters: AtifEnergyParameters
@@ -20,15 +19,15 @@ export function AtifInputEnergyUI(props: {
 
     console.log(props.energyParameters)
 
-    return <div>
+    return <Stack spacing={2}>
         <MatrixNumberValueTextField
-            error={ haveError}
-            helperText={`number should be equal to row(${blockNumberPlus4}) x column(${blockNumberPlus4-4})`}
+            error={haveError}
+            helperText={`number should be equal to row(${blockNumberPlus4}) x column(${blockNumberPlus4 - 4})`}
             label={"pw_block_number"}
             onMatrixValuesChange={async (matrixValue) => {
                 newData.pw_block_number = matrixValue
                 await props.onEnergyParametersChange(newData)
-            }} />
+            }}/>
 
 
         <MultiNumberValueTextField
@@ -38,7 +37,7 @@ export function AtifInputEnergyUI(props: {
             onMValuesChange={async (mValues) => {
                 newData.pw_positive_salt = mValues
                 await props.onEnergyParametersChange(newData)
-            }} />
+            }}/>
 
         <MultiNumberValueTextField
             error={props.energyParameters.pw_negative_salt.length != blockNumberPlus4}
@@ -47,7 +46,7 @@ export function AtifInputEnergyUI(props: {
             onMValuesChange={async (mValues) => {
                 newData.pw_negative_salt = mValues
                 await props.onEnergyParametersChange(newData)
-            }} />
+            }}/>
 
         <MultiNumberValueTextField
             error={props.energyParameters.pw_positive_counterions.length != blockNumberPlus4}
@@ -56,7 +55,7 @@ export function AtifInputEnergyUI(props: {
             onMValuesChange={async (mValues) => {
                 newData.pw_positive_counterions = mValues
                 await props.onEnergyParametersChange(newData)
-            }} />
+            }}/>
 
         <MultiNumberValueTextField
             error={props.energyParameters.pw_negative_counterions.length != blockNumberPlus4}
@@ -65,6 +64,6 @@ export function AtifInputEnergyUI(props: {
             onMValuesChange={async (mValues) => {
                 newData.pw_negative_counterions = mValues
                 await props.onEnergyParametersChange(newData)
-            }} />
-    </div>
+            }}/>
+    </Stack>
 }
